@@ -1,14 +1,14 @@
 ejb_server:
-  build: ./ejb_client
-  expose:
-    - "8080"
-    - "1099"
+  build: ./ejb_server
+  environment:
+    - JAVA_OPTS="-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer"
+    - JBOSS_PASS="mypass"
 ejb_client:
   build: ./ejb_client
-  command: bundle exec rackup -p 3000
-  volumes:
-    - .:/myapp
   ports:
     - "8080:8080"
   links:
-    - db
+    - ejb_server
+  environment:
+    - JAVA_OPTS="-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer"
+    - JBOSS_PASS="mypass"
