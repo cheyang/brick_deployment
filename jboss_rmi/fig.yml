@@ -1,0 +1,14 @@
+ejb_server:
+  build: ./ejb_client
+  expose:
+    - "8080"
+    - "1099"
+ejb_client:
+  build: ./ejb_client
+  command: bundle exec rackup -p 3000
+  volumes:
+    - .:/myapp
+  ports:
+    - "8080:8080"
+  links:
+    - db
