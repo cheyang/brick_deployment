@@ -1,7 +1,7 @@
 ejb_server:
   build: ./ejb_server
   environment:
-    - JAVA_OPTS="-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer"
+    - JAVA_OPTS=-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer
     - JBOSS_PASS="mypass"
 ejb_client:
   build: ./ejb_client
@@ -10,5 +10,5 @@ ejb_client:
   links:
     - ejb_server
   environment:
-    - JAVA_OPTS="-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer"
+    - JAVA_OPTS=-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer
     - JBOSS_PASS="mypass"
