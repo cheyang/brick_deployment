@@ -1,7 +1,15 @@
-FROM ruby
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
-RUN mkdir /myapp
-WORKDIR /myapp
-ADD Gemfile /myapp/Gemfile
-RUN bundle install
-ADD . /myapp
+FROM tutum/jboss:as5
+MAINTAINER Che Yang <cheyang@163.com>
+
+ADD ../repo/run.sh /
+ADD ../repo/ear/jboss-rmi.ear  /jboss-5.1.0.GA/server/all/deploy
+ADD ../repo/ejb-war/commmon/monit.jar /jboss-5.1.0.GA/server/all/lib
+
+RUN chmod +x /*.sh
+
+EXPOSE 8080 1099 3528
+
+CMD ["/run.sh"]
+
+
+
