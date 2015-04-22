@@ -1,6 +1,5 @@
 ejb_server:
   build: ./ejb_server
-  hostname: ejb_server
   environment:
     - JAVA_OPTS=-Dorg.omg.PortableInterceptor.ORBInitializerClass.orbinterceptor.Initializer
     - JBOSS_PASS="mypass"
